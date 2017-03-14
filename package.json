@@ -1,0 +1,24 @@
+{
+  "name": "zad10.6",
+  "version": "1.0.0",
+  "description": "kodilla task 10.6\r Kanban table (trello) in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint js/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akwilina/kodilla-10.6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akwilina/kodilla-10.6/issues"
+  },
+  "homepage": "https://github.com/akwilina/kodilla-10.6#readme",
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "eslint-plugin-dollar-sign": "^1.0.0",
+    "eslint-plugin-jquery": "^1.1.1"
+  }
+}
