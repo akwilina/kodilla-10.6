@@ -7,13 +7,6 @@ ul {
     list-style: none;
 }
 
-.row:before,
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 [class*="col-"] {
     box-sizing: border-box;
     float: left;
@@ -64,6 +57,17 @@ ul {
 
 .column-container .column:nth-of-type(3) h2 {
     color: green;
+}
+
+.column-card-list {
+    min-height: 60px;
+}
+
+.row:before,
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .row {

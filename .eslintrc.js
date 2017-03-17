@@ -11,11 +11,11 @@ module.exports = {
     "rules": {
         "indent": [
             "error",
-            "tab"
+            "tab",
+            {"MemberExpression": 1}
         ],
         "linebreak-style": [
             "error",
-            "windows"
         ],
         "quotes": [
             "error",

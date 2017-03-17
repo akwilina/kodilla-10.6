@@ -2,8 +2,7 @@ $(document).ready(function() {
 	function randomString() {
 		var chars = "0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ";
 		var str = "";
-		var i = 0;
-		for (i = 0; i < 10; i++) {
+		for (var i = 0; i < 10; i++) {
 			str += chars[Math.floor(Math.random() * chars.length)];
 		}
 		return str;
@@ -31,9 +30,9 @@ $(document).ready(function() {
 			});
 
 			$column.append($columnTitle)
-                .append($columnDelete)
-                .append($columnAddCard)
-                .append($columnCardList);
+				.append($columnDelete)
+				.append($columnAddCard)
+				.append($columnCardList);
 
 			return $column;
 		}
@@ -52,23 +51,21 @@ $(document).ready(function() {
 		var self = this;
 		this.id = randomString();
 		this.description = description;
-		this.$element = createCard();
 
-		function createCard() {
-			var $card = $("<li>").addClass("card");
-			var $cardRow = $("<div>").addClass("row");
-			var $cardDescription = $("<p>").addClass("card-description col-10").text(self.description);
-			var $cardDelete = $("<button>").addClass("btn-delete col-2").text("x");
+		var $card = $("<li>").addClass("card").attr({title: this.description + " #" + this.id});
+		var $cardRow = $("<div>").addClass("row");
+		var $cardDescription = $("<p>").addClass("card-description col-10").text(self.description);
+		var $cardDelete = $("<button>").addClass("btn-delete col-2").text("x");
 
-			$cardDelete.click(function () {
-				self.removeCard();
-			});
+		$cardDelete.click(function () {
+			self.removeCard();
+		});
 
-			$card.append($cardRow);
-			$cardRow.append($cardDelete)
-                .append($cardDescription);
-			return $card;
-		}
+		$card.append($cardRow);
+		$cardRow.append($cardDelete)
+			.append($cardDescription);
+		this.$element = $card;
+
 	}
 
 	Card.prototype = {
@@ -109,15 +106,9 @@ $(document).ready(function() {
 	board.addColumn(doingColumn);
 	board.addColumn(doneColumn);
 
-    //creating new cards
-	var card1 = new Card("Make world great again");
-	var card2 = new Card("Go to the movies with M.");
-	var card3 = new Card("Fix sinking roof");
-	var card4 = new Card("Study JavaScript");
-
-    //adding cards to column
-	todoColumn.addCard(card1);
-	doingColumn.addCard(card2);
-	doingColumn.addCard(card4);
-	doneColumn.addCard(card3);
+    //creating and adding cards to column
+	todoColumn.addCard(new Card("Make world great again"));
+	doingColumn.addCard(new Card("Go to the movies with M."));
+	doingColumn.addCard(new Card("Study JavaScript"));
+	doneColumn.addCard(new Card("Fix sinking roof"));
 });
