@@ -24,7 +24,8 @@ $(document).ready(function() {
 			$columnDelete.click(function () {
 				self.removeColumn();
 			});
-            // Add new card after button clicking
+
+			// Add new card after button clicking
 			$columnAddCard.click(function () {
 				self.addCard(new Card(prompt("Write card name")));
 			});
@@ -41,6 +42,7 @@ $(document).ready(function() {
 	Column.prototype = {
 		addCard: function (card) {
 			this.$element.children("ul").append(card.$element);
+			return this;
 		},
 		removeColumn: function () {
 			this.$element.remove();
@@ -65,7 +67,6 @@ $(document).ready(function() {
 		$cardRow.append($cardDelete)
 			.append($cardDescription);
 		this.$element = $card;
-
 	}
 
 	Card.prototype = {
@@ -79,6 +80,7 @@ $(document).ready(function() {
 		addColumn: function (column) {
 			this.$element.append(column.$element);
 			initSortable();
+			return column;
 		},
 		$element: $("#board .column-container")
 	};
@@ -96,19 +98,9 @@ $(document).ready(function() {
 		board.addColumn(column);
 	});
 
-    //adding new column
-	var todoColumn = new Column("To do");
-	var doingColumn = new Column("Doing");
-	var doneColumn = new Column("Done!");
-
-    //adding columns to table
-	board.addColumn(todoColumn);
-	board.addColumn(doingColumn);
-	board.addColumn(doneColumn);
-
-    //creating and adding cards to column
-	todoColumn.addCard(new Card("Make world great again"));
-	doingColumn.addCard(new Card("Go to the movies with M."));
-	doingColumn.addCard(new Card("Study JavaScript"));
-	doneColumn.addCard(new Card("Fix sinking roof"));
+	//creating and adding columns and cards to board
+	board.addColumn(new Column("To do")).addCard(new Card("Make world great again"));
+	board.addColumn(new Column("Doing")).addCard(new Card("Go to the movies with M."))
+		.addCard(new Card("Study JavaScript"));
+	board.addColumn(new Column("Done!")).addCard(new Card("Fix sinking roof"));
 });
